@@ -1,0 +1,13 @@
+harry:
+  type: Book
+  title: Harry Potter and the Order of the Phoenix
+  author: Rowling, J. K.
+  volume: 5
+  page-total: 768
+  date: 2003-06-21
+
+quicksort-algorithm:
+  type: Web
+  title: Q4. クイックソート
+  author: アルゴ式
+  url: https://algo-method.com/tasks/442

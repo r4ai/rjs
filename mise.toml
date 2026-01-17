@@ -1,0 +1,7 @@
+[tools]
+actionlint = "1.7.9"
+deno = "2.6.5"
+pinact = "3.2.0"
+tinymist = "0.14.4"
+typst = "0.14.2"
+typstyle = "0.14.4"

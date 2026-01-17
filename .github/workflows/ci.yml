@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    permissions:
+      contents: read
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        task:
+          - format:typst
+          - format:deno
+          - lint:deno
+          - lint:github-actions
+          - build:website
+          - test:e2e
+        os:
+          - ubuntu-24.04
+        include:
+          - task: test:e2e
+            os: macos-26
+          - task: test:e2e
+            os: windows-2025
+      fail-fast: false
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Setup tools
+        uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3.5.0
+
+      - name: Format with typstyle
+        if: matrix.task == 'format:typst'
+        run: deno task format:typst:check
+
+      - name: Format with deno
+        if: matrix.task == 'format:deno'
+        run: deno task format:deno:check
+
+      - name: Lint with deno
+        if: matrix.task == 'lint:deno'
+        run: deno task lint:deno:check
+
+      - name: Run pinact
+        if: matrix.task == 'lint:github-actions'
+        run: pinact run --check
+
+      - name: Run actionlint
+        if: matrix.task == 'lint:github-actions'
+        run: actionlint
+
+      - name: Build website
+        if: matrix.task == 'build:website'
+        run: deno task build:website
+
+      - name: Run e2e tests
+        if: matrix.task == 'test:e2e'
+        run: deno task test:e2e

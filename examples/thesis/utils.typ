@@ -40,7 +40,9 @@
   let d = dt.day()
 
   if y == none or m == none or d == none {
-    panic("wareki: dt must include year/month/day (got time-only or partial datetime).")
+    panic(
+      "wareki: dt must include year/month/day (got time-only or partial datetime).",
+    )
   }
 
   // YYYYMMDD の整数にして大小比較を簡単にする

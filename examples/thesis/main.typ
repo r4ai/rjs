@@ -92,7 +92,10 @@
 }
 
 // 目次
-#show outline.entry.where(level: 1): set text(weight: "bold", font: "Noto Sans JP")
+#show outline.entry.where(level: 1): set text(
+  weight: "bold",
+  font: "Noto Sans JP",
+)
 #outline(
   title: [
     目次

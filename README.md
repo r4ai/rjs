@@ -24,7 +24,7 @@
 deno run --reload --allow-{env,net,read,write} https://raw.githubusercontent.com/r4ai/rjs/refs/heads/main/scripts/install.ts
 ```
 
-使用方法は、[テンプレートの使用](#テンプレートの使用) を参照してください。
+使用方法は、[使い方](#使い方) を参照してください。
 
 <details>
 

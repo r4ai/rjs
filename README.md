@@ -5,10 +5,14 @@
 自分用に作成したもので、主に大学のレポート作成での使用を想定しています。
 
 > [!IMPORTANT]
-> サンプル PDF：
+> 例：
 >
-> - [report.pdf](https://r4ai.github.io/rjs/report.pdf)
-> - [thesis.pdf](https://r4ai.github.io/rjs/thesis.pdf)
+> - レポート
+>   - PDF: [report.pdf](https://r4ai.github.io/rjs/report.pdf)
+>   - Typst: [examples/report/main.typ](./examples/report/main.typ)
+> - 論文
+>   - PDF: [thesis.pdf](https://r4ai.github.io/rjs/thesis.pdf)
+>   - Typst: [examples/thesis/main.typ](./examples/thesis/main.typ)
 
 ## インストール
 
